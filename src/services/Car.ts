@@ -35,17 +35,13 @@ class CarService implements IService<ICar> {
       throw parsed.error;
     }
     const result = await this._car.update(_id, obj);
-    if (!result) {
-      throw new Error('Unknown error');
-    }
+    if (!result) throw new Error(ErrorTypes.EntityNotFound);
     return result;
   }
 
   public async delete(_id: string): Promise<ICar> {
     const car = await this._car.delete(_id);
-    if (!car) {
-      throw new Error('Unknown error');
-    }
+    if (!car) throw new Error(ErrorTypes.EntityNotFound);
     return car;
   }
 }

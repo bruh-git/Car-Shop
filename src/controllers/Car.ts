@@ -48,6 +48,6 @@ export default class CarController {
   ) {
     const { params } = req;
     const result = await this._service.delete(params.id);
-    return res.status(200).json(result);
+    return res.status(204).json(result);
   }
 }
